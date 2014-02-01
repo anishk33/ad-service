@@ -11,6 +11,8 @@
 		<spring.version>3.1.1.RELEASE</spring.version>
 		<spring-ws.version>2.1.2.RELEASE</spring-ws.version>
 		<resteasy-version>2.3.5.Final</resteasy-version>
+		<hibernate.version>4.1.1.Final</hibernate.version>
+		<org.slf4j-version>1.6.1</org.slf4j-version>
 		<apache.commons-version>1.3.2</apache.commons-version>
 	</properties>
 	<dependencies>
@@ -76,6 +78,7 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<!-- end security dependencies -->
+
 		<!-- webservice dependencies -->
 		<dependency>
 			<groupId>org.springframework.ws</groupId>
@@ -114,12 +117,53 @@
 			<version>${resteasy-version}</version>
 		</dependency>
 		<!-- end Resteasy Dependencies -->
+
+		<!-- Hibernate Dependencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<!-- end hibernate dependencies -->
+
 		<!-- logging -->
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<!-- end logging -->
+
 		<!-- apache commons dependencies -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -136,11 +180,6 @@
 					<groupId>commons-codec</groupId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>

@@ -27,7 +27,7 @@
 			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
 		</listener-class>
 	</listener>
-	<!-- This SpringContextLoader absolutely has to come after the reasteasy 
+	<!-- This SpringContextLoader absolutely has to come after the rest easy 
 		configuration -->
 	<listener>
 		<listener-class>
