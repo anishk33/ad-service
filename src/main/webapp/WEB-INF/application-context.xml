@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sws="http://www.springframework.org/schema/web-services"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:oxm="http://www.springframework.org/schema/oxm" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+	
+	<context:component-scan base-package="com.ads" />
+	
+	<context:property-placeholder
+		location="classpath:/properties/application.properties" />
+		
+	<!-- <import resource="any-resource.xml" /> -->
+	
+	<sec:authentication-manager id=" propertyBasedAuthenticationManager ">
+		<sec:authentication-provider>
+			<sec:user-service id="adminUserService">
+				<sec:user name="admin" password="admin" authorities="ADMINISTRATOR" />
+			</sec:user-service>
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+	<sec:http pattern="/test/admin/**" use-expressions="true"
+		authentication-manager-ref="propertyBasedAuthenticationManager"
+		create-session="never">
+		<sec:intercept-url pattern="/test/admin/**"
+			access="hasRole('ADMINISTRATOR')" />
+		<sec:http-basic />
+	</sec:http>
+</beans>
